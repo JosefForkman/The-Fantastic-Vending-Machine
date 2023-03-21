@@ -1,6 +1,6 @@
 ﻿namespace Vending_Machine
 {
-    internal class Store : ProductContainer
+    internal class Store
     {
 
         public Store(string name)
