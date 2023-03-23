@@ -44,7 +44,7 @@ class Game
 
     void Tick()
     {
-        Console.WriteLine("Tick");
+        //Console.WriteLine("Tick");
         ScheduleNextTick();
     }
 
