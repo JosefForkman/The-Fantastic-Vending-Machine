@@ -24,23 +24,33 @@
         public void Bay(int amount, string id, Store continuer)
         {
             Product storeProdukt = continuer.getProduktById(id);
-            Product product = getProduktById(id);
+            Product cartProduct = getProduktByName(storeProdukt.Name);
 
             // Check if possible to bay
             if (storeProdukt.Stock >= amount)
             {
-                // Set 
-                product.Stock = amount;
                 storeProdukt.Stock -= amount;
+                Product product = new(storeProdukt.Name, storeProdukt.Price, amount);
 
-                totalCost += product.Price;
+                if (cartProduct != null)
+                {
+                    cartProduct.Stock += amount;
+                } 
+                else
+                {
+                    AddProduct(product);
+                }
 
-                AddProduct(storeProdukt);
+                totalCost += (storeProdukt.Price * amount);
             }
             else
             {
                 throw new Exception("You can\'t bay more then the store have in stock");
             }
         }   
+        public void getTotalMoney ()
+        {
+            Console.WriteLine($"Kundvangnen har ett prudukter med värdet {totalCost}");
+        }
     }
 }

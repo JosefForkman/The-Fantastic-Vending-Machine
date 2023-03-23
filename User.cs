@@ -2,15 +2,13 @@
 {
     internal class User
     {
-        public User(string name, int money, Cart cart)
+        public User(string name, int money)
         {
             Name = name;
             Money = money;
-            Cart = cart;
         }
 
         public string Name { get; }
         public int Money { get; }
-        public Cart Cart { get; }
     }
 }

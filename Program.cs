@@ -6,6 +6,7 @@ internal class Program
     {
         var store = new Store("Biltema");
         var cart = new Cart();
+        var user = new User("Josef", 800);
 
         var game = new Game();
 
@@ -53,6 +54,12 @@ internal class Program
                         cart.GetAllProducts();
                         game.Resume();
                         break;
+                    case ConsoleKey.A:
+                        bay();
+                        break;
+                   case ConsoleKey.M:
+                        cart.getTotalMoney();
+                        break;
                     case ConsoleKey.Escape:
                         game.Stop();
                         return;
@@ -65,6 +72,16 @@ internal class Program
             Console.WriteLine("List all the prodoct from cart write B");
             Console.WriteLine("List all the prodoct from shop write S");
             Console.WriteLine("");
+        }
+        void bay()
+        {
+
+            string id = Ask("Vad vill du köpa, vänligen ange id för produkten:").Trim();
+            if (Guid.TryParse(id, out var guidOutput)) 
+            {
+                int amount = int.Parse(Ask("Hur många:"));
+                cart.Bay(amount, id, store);
+            }
         }
         string Ask(string text)
         {

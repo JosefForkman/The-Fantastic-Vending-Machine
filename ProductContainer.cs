@@ -13,9 +13,9 @@
         public void GetAllProducts()
         {
             foreach (Product product in products)
-                Console.WriteLine($"{product.Name} with id {product.Id}");
+                Console.WriteLine($"{product.Name} {product.Stock} with id {product.Id}");
 
-            if (products.Count == 0)
+            if (products.Count <= 0)
             {
                 Console.WriteLine("It´s empty!");
             }
@@ -23,6 +23,10 @@
         public Product getProduktById(string id)
         {
             return products.Find(value => value.Id.ToString() == id);
+        }
+        public Product getProduktByName(string Name)
+        {
+            return products.Find(value => value.Name == Name);
         }
 
         public void RemoveById(int amount, string id, Store continuer)
