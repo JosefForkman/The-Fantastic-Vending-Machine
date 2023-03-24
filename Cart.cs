@@ -2,20 +2,17 @@
 {
     internal class Cart: ProductContainer
     {
-        //private List<Product> products = new List<Product>();
         private int totalCost = 0;
 
         public Cart() {}
 
         
         
-        public void reset(Store container) {
-            List<Product> removedProdukts = products;
-
-            foreach (Product product in removedProdukts)
+        public void Reset(Store container) {
+            for (int i = 0; i < products.Count; i++) 
             {
-                string id = product.Id.ToString();
-                int stock  = product.Stock;
+                string id = products[i].Id.ToString();
+                int stock = products[i].Stock;
                 RemoveById(stock, id, container);
             }
 
@@ -50,7 +47,7 @@
         }   
         public void getTotalMoney ()
         {
-            Console.WriteLine($"Kundvangnen har ett prudukter med värdet {totalCost}");
+            Console.WriteLine($"Cart has prodokts with value of{totalCost}kr");
         }
     }
 }

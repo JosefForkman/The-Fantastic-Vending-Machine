@@ -40,7 +40,7 @@ internal class Program
                         string anser = Ask("Vill du ha hjälp (ja/nej):");
                         if (anser.ToLower() == "ja")
                         {
-                            help();
+                            Help();
                         }
                         game.Resume();
                         break;
@@ -55,10 +55,13 @@ internal class Program
                         game.Resume();
                         break;
                     case ConsoleKey.A:
-                        bay();
+                        Bay();
                         break;
                    case ConsoleKey.M:
                         cart.getTotalMoney();
+                        break;
+                    case ConsoleKey.R:
+                        cart.Reset(store);
                         break;
                     case ConsoleKey.Escape:
                         game.Stop();
@@ -67,19 +70,21 @@ internal class Program
             }
         }
 
-        void help()
+        void Help()
         {
             Console.WriteLine("List all the prodoct from cart write B");
             Console.WriteLine("List all the prodoct from shop write S");
-            Console.WriteLine("");
+            Console.WriteLine("to start buying write A");
+            Console.WriteLine("to see cart money write M");
+            Console.WriteLine("to reset cart R");
         }
-        void bay()
+        void Bay()
         {
 
-            string id = Ask("Vad vill du köpa, vänligen ange id för produkten:").Trim();
+            string id = Ask("What do you want to buy, please enter the id of the product:").Trim();
             if (Guid.TryParse(id, out var guidOutput)) 
             {
-                int amount = int.Parse(Ask("Hur många:"));
+                int amount = int.Parse(Ask("How many:"));
                 cart.Bay(amount, id, store);
             }
         }

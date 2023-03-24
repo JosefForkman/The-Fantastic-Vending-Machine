@@ -48,9 +48,9 @@ class Game
         ScheduleNextTick();
     }
 
-    void ScheduleNextTick()
+    void ScheduleNextTick(int speed = 500)
     {
         // the game will automatically update itself every half a second, adjust as needed
-        _timer = new ScheduleTimer(500, Tick);
+        _timer = new ScheduleTimer(speed, Tick);
     }
 }

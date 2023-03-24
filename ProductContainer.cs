@@ -32,7 +32,7 @@
         public void RemoveById(int amount, string id, Store continuer)
         {
             Product product = getProduktById(id);
-            Product storeProdukt = continuer.getProduktById(id);
+            Product storeProdukt = continuer.getProduktByName(product.Name);
 
 
             // Error check 
@@ -42,7 +42,7 @@
             }
 
             // check storeProdukt is does not exist
-            if (storeProdukt != null)
+            if (storeProdukt == null)
             {
                 throw new Exception("You are trying to access an prodokt from stor which does not exist.");
             }
