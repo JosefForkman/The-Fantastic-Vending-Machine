@@ -9,6 +9,14 @@
         }
 
         public string Name { get; }
-        public int Money { get; }
+        public int Money { get; private set; }
+
+        public void SetMoney(int _money)
+        {
+            if (Money + _money >= 0)
+            {
+                Money += _money;
+            }
+        }
     }
 }
